@@ -15,6 +15,7 @@ if (isset($_POST['agregar'])) {
     $user->setPhoneNumber($_POST['phoneNumber']);
     $user->setUserEmail($_POST['userEmail']);
     $user->setUserAvailability($_POST['userAvailability']);
+    $user->setUserImage('1');
 
     $crud->registerUser($user);
     header('Location: ../../views/index.php');

@@ -6,7 +6,7 @@
         // method to register a user
         public function registerUser($user){
             $dataBase=conectionDataBase::conection();
-            $insert = $dataBase -> prepare('INSERT INTO users VALUES(NULL,:userName,:userLastName,:specialtyID,:professionalLicenseNumber,:citizenshipID,:phoneNumber,:userEmail,:userAvailability)');
+            $insert = $dataBase -> prepare('INSERT INTO users VALUES(NULL,:userName,:userLastName,:specialtyID,:professionalLicenseNumber,:citizenshipID,:phoneNumber,:userEmail,:userAvailability,:imageID)');
             $insert -> bindValue('userName',$user->getUserName());
             $insert -> bindValue('userLastName',$user->getUserLastName());
             $insert -> bindValue('specialtyID',$user->getSpecialtyID());
@@ -15,6 +15,7 @@
             $insert -> bindValue('phoneNumber',$user->getPhoneNumber());
             $insert -> bindValue('userEmail',$user->getUserEmail());
             $insert -> bindValue('userAvailability',$user->getUserAvailability());
+            $insert -> bindValue('imageID',$user->getUserImage());
             $insert -> execute();
         }
         // method to show all users

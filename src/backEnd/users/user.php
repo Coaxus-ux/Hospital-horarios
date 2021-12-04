@@ -9,6 +9,7 @@
         private $phoneNumber;
         private $userEmail;
         private $userAvailability;
+        private $userImage;
         
         function __construct(){}
         
@@ -99,6 +100,14 @@
         public function setUserAvailability($userAvailability)
         {
                 $this->userAvailability = $userAvailability;
+        }
+        public function getUserImage()
+        {
+                return $this->userImage;
+        }
+        public function setUserImage($userImage)
+        {
+                $this->userImage = $userImage;
         }
    }
 

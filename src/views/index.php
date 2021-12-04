@@ -3,7 +3,9 @@ session_start();
 $theme = "dracula";
 if(isset($_GET['theme'])){
     $theme = $_GET['theme'];
+    $_SESSION['theme'] = $theme;
 }
+$_SESSION['theme'] = $theme;
 
 ?>
 
@@ -65,6 +67,16 @@ if(isset($_GET['theme'])){
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">Agregar Especialidad</h2>
+                </div>
+            </div>
+        </a>
+        <a class="my-auto p-2 zoom" href="addSpecialty.php">
+            <div class="card bordered w-56">
+                <figure>
+                    <img src="../../img/ListUsers.svg">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Listar Especialistas</h2>
                 </div>
             </div>
         </a>
