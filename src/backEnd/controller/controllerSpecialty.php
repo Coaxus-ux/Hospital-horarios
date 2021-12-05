@@ -1,4 +1,6 @@
 <?php
+    
+
     require_once('conection.php');
     class SpecialtyController{
         public function __construct(){}
@@ -26,6 +28,21 @@
                 $specialtiesLists[] = $specialtiesList;
             }
             return $specialtiesLists;
+        }
+        //method to verify specialityName
+        public function searchSpecialty($specialtyName){
+            $dataBase=conectionDataBase::conection();
+            $search = $dataBase -> prepare('SELECT * FROM speialty WHERE specialtyName = :specialtyName');
+            $search -> bindValue('specialtyName',$specialtyName);
+            $search -> execute();
+            $specialty = $search -> fetch();
+            echo $specialty['specialtyName'];
+            if($specialty['specialtyName'] == ""){
+                $res = true;
+            }else{
+                $res = false;
+            }
+            return $res;
         }
     }
 ?>

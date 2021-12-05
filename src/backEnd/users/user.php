@@ -110,6 +110,4 @@
                 $this->userImage = $userImage;
         }
    }
-
-
 ?>

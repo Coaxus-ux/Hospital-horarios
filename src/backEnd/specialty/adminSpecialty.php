@@ -12,7 +12,6 @@ if (isset($_POST['agregar'])) {
 
     $crud->registerSpecialty($specialty);
     header('Location: ../../views/index.php');
-
 }
 
 ?>
