@@ -12,8 +12,9 @@ if (isset($_POST['agregar'])) {
     $user->setCitizenshipId($_POST['citizenshipID']);
     $user->setPhoneNumber($_POST['phoneNumber']);
     $user->setUserEmail($_POST['userEmail']);
-    $user->setUserAvailability($_POST['userAvailability']);
+    $user->setUserAvailability(1);
     $user->setUserImage(file_get_contents($_FILES['userImage']['tmp_name']));
+    $user->setShiftsID($_POST['shiftsID']);
     $crud -> registerUser($user);
     $location = 'Location: ../../views/index.php?theme='.$_SESSION['theme'];
     header($location);

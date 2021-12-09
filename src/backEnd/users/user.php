@@ -10,6 +10,7 @@
         private $userEmail;
         private $userAvailability;
         private $userImage;
+        private $shiftsID;
         
         function __construct(){}
         
@@ -108,6 +109,16 @@
         public function setUserImage($userImage)
         {
                 $this->userImage = $userImage;
+        }
+
+        public function getShiftsID()
+        {
+                return $this->shiftsID;
+        }
+
+        public function setShiftsID($shiftsID)
+        {
+                $this->shiftsID = $shiftsID;
         }
    }
 ?>

@@ -11,9 +11,4 @@
   -o-transform: scale(1.1); /* Opera */
   -ms-transform: scale(1.1); /* IE9 */
 }
-.x {
-  display: table-cell;
-  width: 100%;
-  vertical-align: middle;
-  text-align: center;
-}
+

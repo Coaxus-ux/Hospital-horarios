@@ -1,19 +1,27 @@
 <?php
-$error = false;
 session_start();
+if(!isset($_SESSION['theme'])){
+    $_SESSION['theme'] = 'dracula';
+}
 include_once('../backEnd/controller/controllerSpecialty.php');
 include_once('../backEnd/controller/controllerUser.php');
 
 include_once('../backEnd/specialty/specialty.php');
 include_once('../backEnd/users/user.php');
 $specialtyController = new SpecialtyController();
-$listSpecialties = $specialtyController->showSpecialties();
+$listSpecialties = $specialtyController->showAllSpecialties();
 $specialty = new Specialty();
 
-$userController = new UserController();
-$listUsers = $userController->showUsers();
-$user = new User();
+include_once('../backEnd/shifts/shifts.php');
+include_once('../backEnd/controller/controllerShifts.php');
+$shiftsController = new ShiftsController();
+$listShifts = $shiftsController->showAllShifts();
+$shifts = new Shifts();
 
+
+$userController = new UserController();
+$listUsers = $userController->showAllUsers();
+$user = new User();
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +58,8 @@ $user = new User();
                             </div>
                             &nbsp;
 
-                            <select name="specialtyID" class="select select-bordered w-full max-w-xs">
-                                <option disabled="disabled" selected="selected">Seleccione su especialidad</option>
+                            <select name="specialtyID" class="select select-bordered w-full max-w-xs" required>
+                                <option disabled="disabled" selected="selected" value="">Seleccione su especialidad</option>
                                 <?php foreach ($listSpecialties as $specialty) { ?> <option value="<?php echo $specialty->getId() ?>">
                                     <?php echo $specialty->getSpecialtyName() ?>
                                     </option>
@@ -93,18 +101,16 @@ $user = new User();
                                     <input require type="email" name="userEmail" class="input input-bordered input-lg">
                                 </label>
                             </div>
-                            <div class="form-control">
-                                <label class="cursor-pointer label">
-                                    <span class="label-text">Activo</span>
-                                    <input type="radio" name="userAvailability" checked="checked" class="radio" value="1">
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="cursor-pointer label">
-                                    <span class="label-text">Inactivo</span>
-                                    <input type="radio" name="userAvailability" class="radio" value="0">
-                                </label>
-                            </div>
+                            &nbsp;
+
+                            <select class="select select-bordered w-full max-w-xs" name="shiftsID" required>
+                                <option disabled="disabled" selected="selected" value="">Seleccione el turno</option>
+                                <?php foreach ($listShifts as $shifts) { ?> <option value="<?php echo $shifts->getId() ?>">
+                                    <?php echo $shifts->getShiftsName() ?>
+                                    </option>
+                                <?php }
+                                ?>
+                            </select>
 
 
                         </div>
@@ -112,7 +118,7 @@ $user = new User();
 
 
                     <div class="grid grid-cols-1 mt-5 mb-5 mx-7">
-                        <label class="uppercase md:text-sm text-xs font-semibold mb-1">foto de perfil</label>
+                        <label class="uppercase md:text-sm text-xs font-semibold mb-1">foto de perfil (max 500KB)</label>
                         <div class='flex items-center justify-center w-full'>
                             <label class='flex flex-col border-4 border-dashed w-full h-32 hover:border-purple-300 group'>
                                 <div class='flex flex-col items-center justify-center pt-7'>
@@ -122,8 +128,9 @@ $user = new User();
                                     </svg>
                                     <p class='lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider'>
                                         Selecciona un foto</p>
+
                                 </div>
-                                <input type='file' name='userImage' class="hidden" />
+                                <input type='file' name='userImage' class="hidden" required />
                             </label>
                         </div>
                     </div>

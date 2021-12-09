@@ -1,10 +1,13 @@
 <?php
 session_start();
+if(!isset($_SESSION['theme'])){
+    $_SESSION['theme'] = 'dracula';
+}
 include_once('../backEnd/controller/controllerUser.php');
 include_once('../backEnd/controller/controllerSpecialty.php');
 include_once('../backEnd/specialty/specialty.php');
 $specialtyController = new SpecialtyController();
-$listSpecialties = $specialtyController->showSpecialties();
+$listSpecialties = $specialtyController->showAllSpecialties();
 $specialty = new Specialty();
 $userController = new UserController();
 ?>
@@ -13,7 +16,7 @@ $userController = new UserController();
 <?php include_once('../includes/head.php'); ?>
 
 <body>
-    <div class="flex justify-center content-center mt-10">
+    <div class="flex justify-center content-center mt-10 ">
         <div class="my-auto flex">
             <div class="card shadow-xl">
                 <h2 class="card-title text-center">AGREGAR NUEVA ESPECIALIDAD</h2>
@@ -33,31 +36,19 @@ $userController = new UserController();
                                 </label>
                             </div>
                             &nbsp;
-                            <div class="form-control">
-                                <label class="cursor-pointer label">
-                                    <span class="label-text">Activo</span>
-                                    <input type="radio" name="specialtyAvailability" checked="checked" class="radio" value="1">
-                                </label>
-                            </div>
-                            <div class="form-control">
-                                <label class="cursor-pointer label">
-                                    <span class="label-text">Inactivo</span>
-                                    <input type="radio" name="specialtyAvailability" class="radio" value="0">
-                                </label>
-                            </div>
+                            
                         </div>
                     </div>
-                    <input disabled id="savedButton" class="btn btn-block btn-primary " name="submit" type='submit' value='Guardar'>
+                    <input disabled id="savedButton" class="btn btn-block btn-primary" name="submit" type='submit' value='Guardar'>
                     <input type='hidden' name='agregar' value='agregar'>
                 </form>
-                <button class="btn btn-block btn-secundary mt-2 " onclick="location.href='index.php?theme=<?php echo $_SESSION['theme']?>'">Volver</button>
+                <button class="btn btn-block btn-secundary mt-2" onclick="location.href='index.php?theme=<?php echo $_SESSION['theme']?>'">Volver</button>
             </div>
         </div>
-        <div class="grid grid-cols-3 gap-4stats m-4">
+        <div class="grid grid-cols-3 gap-4stats m-4 my-auto">
             <?php
             foreach ($listSpecialties as $specialty) {
             ?>
-
                 <div class="stat">
                     <div class="stat-title">Existen</div>
                     <div class="stat-value"><?php echo $userController->numberUsers($specialty->getId()) ?></div>
@@ -66,13 +57,9 @@ $userController = new UserController();
             <?php
             }
             ?>
-
+        
         </div>
     </div>
-
-
-
-
 
     <script>
         let specialtyarr = [];
