@@ -96,7 +96,7 @@ $shiftsID = $_GET['shiftsID'];
                             <td>
                                 <select id="sunday" class="select select-bordered w-full max-w-xs">
 
-                                    <option value="d">DIA</option>
+                                    <option  value="d">DIA</option>
                                     <option value="n">NOCHE</option>
                                     <option value="b">DESCANSO</option>
 
@@ -124,7 +124,6 @@ $shiftsID = $_GET['shiftsID'];
                 var sundayDataBase = "<?php echo $schedulex[6] ?>";
                 day = [mondayDataBase, tuesdayDataBase, wednesdayDataBase, thursdayDataBase, fridayDataBase, saturdayDataBase, sundayDataBase];
                 document.getElementById("schud").value = day.join("").toString();
-                console.log(day);
                 switch (mondayDataBase) {
                     case 'd':
                         document.getElementById("monday").selectedIndex = 0;
@@ -214,7 +213,6 @@ $shiftsID = $_GET['shiftsID'];
                         break;
                 }
             });
-
             function loadDay() {
                 monday = $('#monday').val();
                 tuesday = $('#tuesday').val();
@@ -282,7 +280,6 @@ $shiftsID = $_GET['shiftsID'];
                     document.getElementById("sunday").selectedIndex = 2;
                     document.getElementById("saturday").selectedIndex = 2;
                 }
-
                 document.getElementById("schud").value = day.join("").toString();
 
                 setTimeout(loadDay, 500);

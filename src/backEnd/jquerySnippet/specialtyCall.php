@@ -7,7 +7,6 @@ require_once('../shifts/shifts.php');
 require_once('../controller/controllerShifts.php');
 $specialty = $_POST['specialty'];
 $appointmentDay = $_POST['dateAppointment'] . " " . $_POST['timeAppointment'];
-echo "RJ";
 
 $userController = new UserController();
 $medicalAppointmentController = new MedicalAppointmentController();
@@ -31,7 +30,6 @@ foreach ($listUser as $user) {
     }else{
         $hor = "n";
     }
-
     if ($schedulex[$dayNumber] == "b") {
         $bussyUsers = true;
     }elseif ($schedulex[$dayNumber] == $hor) {
@@ -48,7 +46,7 @@ foreach ($listUser as $user) {
                 }
             }
         }
-    } else {
+    }else{
         $bussyUsers = true;
     }
     if ($bussyUsers == false) {

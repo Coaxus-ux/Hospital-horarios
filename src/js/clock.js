@@ -4,7 +4,7 @@ function loadClock(){
     var hour = dateTime.getHours(); 
     var minute = dateTime.getMinutes(); 
     var second = dateTime.getSeconds(); 
-
+    
     let clock = hour + ":" + minute + ":" + second;
     document.getElementById("clock").innerText = clock;
     document.getElementById("clock").textContent = clock;

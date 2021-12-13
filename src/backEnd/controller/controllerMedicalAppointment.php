@@ -67,7 +67,7 @@ class MedicalAppointmentController
     {
         $dataBase = conectionDataBase::conection();
         $medicalAppointmentList = [];
-        $search = $dataBase->prepare('SELECT * FROM medicalAppointment WHERE userID = :userID AND appointmentAvailability = 1');
+        $search = $dataBase->prepare('SELECT * FROM medicalAppointment WHERE userID = :userID AND appointmentAvailability = 1 ');
         $search -> bindValue('userID', $id);
         $search -> execute();
         if($search->rowCount() > 0){
@@ -81,7 +81,6 @@ class MedicalAppointmentController
             }
             return $medicalAppointmentLists;
         }
-        
     }
     //method to update a medical appointment avaliability
     public function updateMedicalAppointment($appointmentDay)
