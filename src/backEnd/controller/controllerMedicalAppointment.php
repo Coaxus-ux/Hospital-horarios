@@ -19,6 +19,7 @@ class MedicalAppointmentController
         return $res;
     }
 
+    
 
     //method to show all a medical appointment
     public function getMedicalAppointment()
