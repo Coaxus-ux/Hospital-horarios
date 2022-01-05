@@ -1,5 +1,4 @@
 function loadClock(){
-
     var dateTime = new Date();
     var hour = dateTime.getHours(); 
     var minute = dateTime.getMinutes(); 
