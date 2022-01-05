@@ -13,6 +13,7 @@ $medicalAppointmentController = new MedicalAppointmentController();
 $shiftsController = new ShiftsController();
 $listMedicalAppointment = $medicalAppointmentController->showUserHour($appointmentDay, $specialty);
 
+
 $result = '<option disabled="" selected="">Seleccione especialista </option>';
 
 $listUser = $userController->showUserSpecialty($specialty);
