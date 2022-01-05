@@ -115,6 +115,7 @@ $shiftsID = $_GET['shiftsID'];
                     loadDay();
                 });
 
+                
                 var mondayDataBase = "<?php echo $schedulex[0] ?>";
                 var tuesdayDataBase = "<?php echo $schedulex[1] ?>";
                 var wednesdayDataBase = "<?php echo $schedulex[2] ?>";
