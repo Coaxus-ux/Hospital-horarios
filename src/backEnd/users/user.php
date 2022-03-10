@@ -9,6 +9,8 @@
         private $phoneNumber;
         private $userEmail;
         private $userAvailability;
+        private $userImage;
+        private $shiftsID;
         
         function __construct(){}
         
@@ -100,7 +102,23 @@
         {
                 $this->userAvailability = $userAvailability;
         }
+        public function getUserImage()
+        {
+                return $this->userImage;
+        }
+        public function setUserImage($userImage)
+        {
+                $this->userImage = $userImage;
+        }
+
+        public function getShiftsID()
+        {
+                return $this->shiftsID;
+        }
+
+        public function setShiftsID($shiftsID)
+        {
+                $this->shiftsID = $shiftsID;
+        }
    }
-
-
 ?>
